@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビンゴカード</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border: 1px solid black;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .selected {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>ビンゴカード</h1>
+    <table id="bingo"></table>
+
+    <script>
+        // ビンゴカードのサイズ
+        const cardSize = 7;
+        const table = document.getElementById('bingo');
+
+        // 7x7のビンゴカードを自動生成
+        for (let i = 0; i < cardSize; i++) {
+            const row = table.insertRow();
+            for (let j = 0; j < cardSize; j++) {
+                const cell = row.insertCell();
+                cell.textContent = Math.floor(Math.random() * 50 + 1);
+                cell.onclick = function() {
+                    cell.classList.toggle('selected');
+                };
+            }
+        }
+    </script>
+</body>
+</html>
